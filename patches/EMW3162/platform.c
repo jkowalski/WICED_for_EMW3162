@@ -1,16 +1,3 @@
-/*
- * Copyright 2014, Broadcom Corporation
- * All Rights Reserved.
- *
- * This is UNPUBLISHED PROPRIETARY SOURCE CODE of Broadcom Corporation;
- * the contents of this file may not be disclosed to third parties, copied
- * or duplicated in any form, in whole or in part, without the prior
- * written permission of Broadcom Corporation.
- */
-
-/** @file
- * Defines board support package for BCM943362WCD4 board
- */
 #include "platform.h"
 #include "platform_config.h"
 #include "platform_init.h"
@@ -72,14 +59,14 @@
 };*/
 const platform_gpio_t platform_gpio_pins[] =
 {
-  /* Common GPIOs for internal use */
-  [MICO_SYS_LED]                      = { GPIOB,  0 }, 
-  [MICO_RF_LED]                       = { GPIOB,  1 }, //WICED_GPIO_16
-  [BOOT_SEL]                          = { GPIOB,  1 }, //WICED_GPIO_16
-  [MFG_SEL]                           = { GPIOB,  9 }, //WICED_GPIO_30
-  [EasyLink_BUTTON]                   = { GPIOA,  1 }, //WICED_GPIO_11
+  // /* Common GPIOs for internal use */
+  // [MICO_SYS_LED]                      = { GPIOB,  0 }, 
+  // [MICO_RF_LED]                       = { GPIOB,  1 }, //WICED_GPIO_16
+  // [BOOT_SEL]                          = { GPIOB,  1 }, //WICED_GPIO_16
+  // [MFG_SEL]                           = { GPIOB,  9 }, //WICED_GPIO_30
+  // [EasyLink_BUTTON]                   = { GPIOA,  1 }, //WICED_GPIO_11
   
-  /* GPIOs for external use */
+  /* GPIOs numbered like the pins on EMW3162 */
   [WICED_GPIO_0]  = { GPIOB,  0 }, // Green LED
   [WICED_GPIO_1]  = { GPIOB,  6 }, // I2C1_SCL
   [WICED_GPIO_2]  = { GPIOB,  7 }, // I2C1_SDA
@@ -236,9 +223,7 @@ platform_uart_driver_t platform_uart_drivers[WICED_UART_MAX];
 
 
 /* I2C peripherals. Used by WICED/platform/MCU/wiced_platform_common.c */
-// NOTE: The i2c bus uses the same pins as UART1 RX/TX by default.
-// Either use other pins for i2c or disable UART1 before proceeding.
-/*const platform_i2c_t platform_i2c_peripherals[] =
+const platform_i2c_t platform_i2c_peripherals[] =
 {
     [WICED_I2C_1] =
     {
@@ -256,7 +241,7 @@ platform_uart_driver_t platform_uart_drivers[WICED_UART_MAX];
         .rx_dma_channel          = DMA_Channel_1,
         .gpio_af                 = GPIO_AF_I2C1
     },
-};*/
+};
 
 
 const wiced_spi_device_t wiced_nfc_device =
