@@ -236,6 +236,8 @@ platform_uart_driver_t platform_uart_drivers[WICED_UART_MAX];
 
 
 /* I2C peripherals. Used by WICED/platform/MCU/wiced_platform_common.c */
+// NOTE: The i2c bus uses the same pins as UART1 RX/TX by default.
+// Either use other pins for i2c or disable UART1 before proceeding.
 /*const platform_i2c_t platform_i2c_peripherals[] =
 {
     [WICED_I2C_1] =
@@ -312,7 +314,7 @@ const platform_gpio_t wifi_control_pins[] =
 /* Wi-Fi SDIO bus pins. Used by WICED/platform/STM32F2xx/WWD/wwd_SDIO.c */
 const platform_gpio_t wifi_sdio_pins[] =
 {
-    [WWD_PIN_SDIO_OOB_IRQ] = { GPIOB,  13 },
+    [WWD_PIN_SDIO_OOB_IRQ] = { GPIOB, 13 },
     [WWD_PIN_SDIO_CLK    ] = { GPIOC, 12 },
     [WWD_PIN_SDIO_CMD    ] = { GPIOD,  2 },
     [WWD_PIN_SDIO_D0     ] = { GPIOC,  8 },
@@ -368,6 +370,11 @@ void platform_init_external_devices( void )
     /* Initialise buttons to input by default */
     platform_gpio_init( &platform_gpio_pins[WICED_BUTTON1], INPUT_PULL_UP );
     platform_gpio_init( &platform_gpio_pins[WICED_BUTTON2], INPUT_PULL_UP );
+    platform_gpio_init( &platform_gpio_pins[WICED_SWITCH1], INPUT_PULL_UP );
+    platform_gpio_init( &platform_gpio_pins[WICED_SWITCH2], INPUT_PULL_UP );
+    platform_gpio_init( &platform_gpio_pins[WICED_SWITCH3], INPUT_PULL_UP );
+    platform_gpio_init( &platform_gpio_pins[WICED_SWITCH4], INPUT_PULL_UP );
+
 
 #ifndef WICED_DISABLE_STDIO
     /* Initialise UART standard I/O */

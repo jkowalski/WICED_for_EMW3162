@@ -135,6 +135,10 @@ typedef enum
 #define WICED_LED2         ( WICED_GPIO_16)
 #define WICED_BUTTON1      ( WICED_GPIO_5 )
 #define WICED_BUTTON2      ( WICED_GPIO_11)
+#define WICED_SWITCH1      ( WICED_GPIO_16)
+#define WICED_SWITCH2      ( WICED_GPIO_30)
+#define WICED_SWITCH3      ( WICED_GPIO_29)
+#define WICED_SWITCH4      ( WICED_GPIO_14)
 
 // No thermistor on EMW3162 dev boards ()
 #define WICED_THERMISTOR   ( WICED_GPIO_4 )
