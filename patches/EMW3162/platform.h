@@ -140,13 +140,9 @@ typedef enum
 #define WICED_SWITCH3      ( WICED_GPIO_29)
 #define WICED_SWITCH4      ( WICED_GPIO_14)
 
-// No thermistor on EMW3162 dev boards ()
-#define WICED_THERMISTOR   ( WICED_GPIO_4 )
-
 /* I/O connection <-> Peripheral Connections */
 #define WICED_LED1_JOINS_PWM        ( WICED_PWM_1 )
 #define WICED_LED2_JOINS_PWM        ( WICED_PWM_2 )
-#define WICED_THERMISTOR_JOINS_ADC  ( WICED_ADC_3 )
 
 /*  Bootloader LED D1 */
 #define BOOTLOADER_LED_GPIO      ( WICED_LED1 )

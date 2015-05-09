@@ -1,0 +1,12 @@
+#!/bin/bash
+WICED_ARCHIVE='WICED-SDK-3.1.2.7z.zip'
+
+echo -- WICED 3.1.2 patcher for EMW3162 --
+if [ WICED -nt $WICED_ARCHIVE ]; then 
+	echo === ERROR: The WICED directory is older then $WICED_ARCHIVE
+	echo ===        Operation aborted, for your safety
+	echo ===        
+	echo ===        To override, either delete the WICED directory or run 'touch $WICED_ARCHIVE'
+fi
+echo FIN
+#unzip WICED-SDK-3.1.2.7z.zip
