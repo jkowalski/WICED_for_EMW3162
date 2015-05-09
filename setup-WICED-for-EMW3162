@@ -1,12 +1,34 @@
 #!/bin/bash
-WICED_ARCHIVE='WICED-SDK-3.1.2.7z.zip'
+WICED_DIR='WICED-SDK-3.1.2'
+WICED_ARCHIVE_EXT='.7z.zip'
 
 echo -- WICED 3.1.2 patcher for EMW3162 --
-if [ WICED -nt $WICED_ARCHIVE ]; then 
-	echo === ERROR: The WICED directory is older then $WICED_ARCHIVE
-	echo ===        Operation aborted, for your safety
+if [ -e $WICED_DIR$WICED_ARCHIVE_EXT ]; then 
+	echo === ERROR: The $WICED_DIR directory already exists.
+	echo ===        Operation aborted, for your safety.
 	echo ===        
-	echo ===        To override, either delete the WICED directory or run 'touch $WICED_ARCHIVE'
+	echo ===        Delete the $WICED_DIR directory to proceed.
 fi
-echo FIN
-#unzip WICED-SDK-3.1.2.7z.zip
+
+echo === Decompressing WICED
+unzip $WICED_DIR$WICED_ARCHIVE_EXT >> /dev/null
+7z x *.7z >> /dev/null
+rm *.7z
+
+echo === Installing the EMW3162 platform
+cp -r patches/EMW3162 $WICED_DIR/platforms
+
+echo === Patching wiced_network.c
+unzip patches/wiced_network.c.zip -o -d $WICED_DIR/WICED/network/LwIP/WICED/
+
+echo === Patching the bootloader
+patch $WICED_DIR/apps/waf/bootloader/bootloader.c patches/bootloader.c.patch
+
+echo === Copying flashing scripts for st-link-v2 to $WICED_DIR
+cp scripts/* $WICED_DIR
+
+echo ===
+echo === Finished decompressing and patching $WICED_DIR for EMW3162
+echo === J-Link support is included in WICED and flash.sh supports
+echo === flashing via st-link-v2. Refer to the Wiki for other JTAG adapters
+echo ===
