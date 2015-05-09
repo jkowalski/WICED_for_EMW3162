@@ -26,7 +26,7 @@ echo === Installing the EMW3162 platform
 cp -r patches/EMW3162 $WICED_DIR/platforms
 
 echo
-echo === Patching wiced_network.c (see http://community.broadcom.com/message/10647#10647)
+echo "=== Patching wiced_network.c (see http://community.broadcom.com/message/10647#10647)"
 unzip -o patches/wiced_network.c.zip -d $WICED_DIR/WICED/network/LwIP/WICED/
 
 echo
