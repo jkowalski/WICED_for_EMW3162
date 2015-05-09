@@ -26,11 +26,14 @@ echo === Installing the EMW3162 platform
 cp -r patches/EMW3162 $WICED_DIR/platforms
 
 echo
-echo === Patching wiced_network.c
+echo === Patching wiced_network.c (see http://community.broadcom.com/message/10647#10647)
 unzip -o patches/wiced_network.c.zip -d $WICED_DIR/WICED/network/LwIP/WICED/
 
 echo
 echo === Patching the bootloader
+echo === This allows you to hold down buttons on the dev-board
+echo === to halt the bootloader. This allows you to flash the device
+echo === even if the application uses the JTAG pins for something else.
 patch $WICED_DIR/apps/waf/bootloader/bootloader.c patches/bootloader.c.patch
 
 echo
