@@ -92,6 +92,8 @@ extern "C" {
  */
 #define WICED_USE_WIFI_32K_CLOCK_MCO
 
+/*  OTA */
+#define PLATFORM_HAS_OTA
 
 #ifdef __cplusplus
 } /* extern "C" */

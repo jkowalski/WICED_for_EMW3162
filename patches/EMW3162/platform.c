@@ -11,6 +11,8 @@
 /******************************************************
  *                      Macros
  ******************************************************/
+#define PLATFORM_FACTORY_RESET_CHECK_PERIOD     ( 100 )
+#define PLATFORM_FACTORY_RESET_TIMEOUT          ( 5000 )
 
 /******************************************************
  *                    Constants
@@ -355,7 +357,7 @@ void platform_init_external_devices( void )
     /* Initialise buttons to input by default */
     platform_gpio_init( &platform_gpio_pins[WICED_BUTTON1], INPUT_PULL_UP );
     platform_gpio_init( &platform_gpio_pins[WICED_BUTTON2], INPUT_PULL_UP );
-    platform_gpio_init( &platform_gpio_pins[WICED_SWITCH1], INPUT_PULL_UP );
+    //platform_gpio_init( &platform_gpio_pins[WICED_SWITCH1], INPUT_PULL_UP );
     platform_gpio_init( &platform_gpio_pins[WICED_SWITCH2], INPUT_PULL_UP );
     platform_gpio_init( &platform_gpio_pins[WICED_SWITCH3], INPUT_PULL_UP );
     platform_gpio_init( &platform_gpio_pins[WICED_SWITCH4], INPUT_PULL_UP );
@@ -365,6 +367,38 @@ void platform_init_external_devices( void )
     /* Initialise UART standard I/O */
     platform_stdio_init( &platform_uart_drivers[STDIO_UART], &platform_uart_peripherals[STDIO_UART], &stdio_config );
 #endif
+}
+
+/* Checks if a factory reset is requested */
+wiced_bool_t platform_check_factory_reset( void )
+{
+    uint32_t factory_reset_counter = 0;
+    int led_state = 0;
+    while (  ( 0 == platform_gpio_input_get( &platform_gpio_pins[ WICED_BUTTON1 ] ) )
+           &&( ( factory_reset_counter += PLATFORM_FACTORY_RESET_CHECK_PERIOD ) <= PLATFORM_FACTORY_RESET_TIMEOUT )
+           &&( WICED_SUCCESS == (wiced_result_t)host_rtos_delay_milliseconds( PLATFORM_FACTORY_RESET_CHECK_PERIOD ) )
+          )
+    {
+        /* Factory reset button is being pressed. */
+        /* User Must press it for 5 seconds to ensure it was not accidental */
+        /* Toggle LED every 100ms */
+
+        if ( led_state == 0 )
+        {
+            platform_gpio_output_high( &platform_gpio_pins[ WICED_LED1 ] );
+            led_state = 1;
+        }
+        else
+        {
+            platform_gpio_output_low( &platform_gpio_pins[ WICED_LED1 ] );
+            led_state = 0;
+        }
+        if ( factory_reset_counter == 5000 )
+        {
+            return WICED_TRUE;
+        }
+    }
+    return WICED_FALSE;
 }
 
 /******************************************************

@@ -42,6 +42,21 @@ $(NAME)_COMPONENTS += drivers/spi_flash
 # Source files
 $(NAME)_SOURCES := platform.c
 
+# WICED APPS
+# APP0 and FILESYSTEM_IMAGE are reserved main app and resources file system
+# FR_APP :=
+# DCT_IMAGE :=
+# OTA_APP :=
+# FILESYSTEM_IMAGE :=
+# WIFI_FIRMWARE :=
+# APP0 :=
+# APP1 :=
+# APP2 :=
+
+# WICED APPS LOOKUP TABLE
+APPS_LUT_HEADER_LOC := 0x0000
+APPS_START_SECTOR := 1
+
 ifneq ($(APP),bootloader)
 ifneq ($(MAIN_COMPONENT_PROCESSING),1)
 $(info +-----------------------------------------------------------------------------------------------------+ )
