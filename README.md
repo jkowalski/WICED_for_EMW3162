@@ -15,4 +15,4 @@ This allows you to flash the device, even if you have repurposed the default JTA
 
 Just make sure that the JTAG pins are not initialized to alternative functions in the platform config, but in the application instead.
 
-Join the chat at https://gitter.im/willemwouters/EMW3162_WICED
+There is also a gitter channel for EMW3162 at https://gitter.im/willemwouters/EMW3162_WICED
