@@ -12,3 +12,5 @@ If you want to stop the bootloader from starting the application, hold down the 
 This allows you to flash the device, even if you have repurposed the default JTAG pins in the application.
 
 Just make sure that the JTAG pins are not initialized to alternative functions in the platform config, but in the application instead.
+
+Join the chat at https://gitter.im/willemwouters/EMW3162_WICED
