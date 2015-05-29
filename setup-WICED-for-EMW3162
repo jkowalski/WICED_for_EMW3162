@@ -30,6 +30,10 @@ echo "=== Patching wiced_network.c (see http://community.broadcom.com/message/10
 unzip -o patches/wiced_network.c.zip -d $WICED_DIR/WICED/network/LwIP/WICED/
 
 echo
+echo === Patching wiced_apps.mk for a bug that breaks OTA
+cp patches/wiced_apps.mk $WICED_DIR/tools/makefiles
+
+echo
 echo === Patching the bootloader
 echo === This allows you to hold down buttons on the dev-board
 echo === to halt the bootloader. This allows you to flash the device
