@@ -30,7 +30,7 @@ echo "=== Patching wiced_network.c (see http://community.broadcom.com/message/10
 unzip -o patches/wiced_network.c.zip -d $WICED_DIR/WICED/network/LwIP/WICED/
 
 echo
-echo === Patching wiced_apps.mk for a bug that breaks OTA
+echo "=== Patching wiced_apps.mk (see http://community.broadcom.com/thread/4456?sr=stream&ru=17953)"
 cp patches/wiced_apps.mk $WICED_DIR/tools/makefiles
 
 echo
