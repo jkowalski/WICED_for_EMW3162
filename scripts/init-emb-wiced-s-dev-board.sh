@@ -1,6 +1,6 @@
 #!/bin/bash
-rmmod ftdi_sio >> /dev/null
-rmmod usbserial >> /dev/null
+rmmod ftdi_sio 2>/dev/null
+rmmod usbserial 2>/dev/null
 sleep 1
 modprobe ftdi_sio
 modprobe usbserial
