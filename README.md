@@ -29,3 +29,5 @@ You can get an EMW3162 at Seeedstudio
 Both development boards come with headers to solder on to an EMW3162. If you plan on using more than one EMW3162 with a development board, you need to source 2mm headers. The most common type of header is 1 mil or 2.54mm and those don't fit.
 SeeedStudio did not carry those headers when I last ordered a dev board.
 You will also require a couple of strips of regular headers to solder onto the development board as breakouts for the EMW3162 pins.
+
+![Sample setup](https://raw.githubusercontent.com/EMW3162/WICED_for_EMW3162/master/docs_and_libraries/green-dev-board-with-annotations.png)
