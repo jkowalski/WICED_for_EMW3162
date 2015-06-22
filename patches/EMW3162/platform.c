@@ -102,7 +102,9 @@ const platform_gpio_t platform_gpio_pins[] =
   [WICED_GPIO_30] = { GPIOB,  9 }, // Status SW
   [WICED_GPIO_31] = { GPIOA,  5 },
   [WICED_GPIO_32] = { GPIOA,  6 },
-  [WICED_GPIO_33] = { GPIOA,  8 },
+  [WICED_GPIO_33] = { GPIOA,  7 }, // NOTE: Some schematics and docs incorrectly refer to this pin as
+                                   // PA8. Do not attempt to use PA8, as it's used for the SDIO bus to 
+                                   // the Wifi module.
   [WICED_GPIO_34] = { GPIOB, 15 },
   [WICED_GPIO_35] = { GPIOC,  3 },
   [WICED_GPIO_36] = { GPIOC,  4 },
