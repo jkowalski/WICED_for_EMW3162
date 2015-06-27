@@ -41,12 +41,28 @@ echo === even if the application uses the JTAG pins for something else.
 patch $WICED_DIR/apps/waf/bootloader/bootloader.c patches/bootloader.c.patch
 
 echo
-echo === Copying flashing scripts for st-link-v2 to $WICED_DIR
+echo === Copying utility scripts to $WICED_DIR
 cp scripts/* $WICED_DIR
+
+echo
+echo === Copying st-link-v2 config to $WICED_DIR
+cp patches/stlinkv2.cfg $WICED_DIR
+
+echo 
+echo === Replacing the J-Link OpenOCD configuration with one that works
+cp patches/jlink.cfg $WICED_DIR/tools/OpenOCD
+
+echo 
+echo === Adding udev rules to enable J-Link and st-link-v2 from userspace
+echo === Please enter your password if prompted
+sudo cp patches/*.rules /etc/udev/rules.d
 
 echo
 echo ===
 echo === Finished decompressing and patching $WICED_DIR for EMW3162
-echo === J-Link support is included in WICED and flash.sh supports
-echo === flashing via st-link-v2. Refer to the Wiki for other JTAG adapters
+echo === Use JTAG support from WICED for the green development board and J-Link
+echo === and use flash.sh for flashing via st-link-v2.
+echo === Refer to the README.md and the Github Wiki for other JTAG adapters.
+echo === Support is also available on our Gitter.im channel at: 
+echo === https://gitter.im/EMW3162/WICED_for_EMW3162
 echo ===
