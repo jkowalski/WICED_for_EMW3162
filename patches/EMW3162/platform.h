@@ -107,6 +107,13 @@ typedef enum
     WICED_ADC_1,
     WICED_ADC_2,
     WICED_ADC_3,
+    WICED_ADC_4,
+    WICED_ADC_5,
+    WICED_ADC_6,
+    WICED_ADC_7,
+    WICED_ADC_8,
+    WICED_ADC_9,
+    WICED_ADC_10,
     WICED_ADC_MAX, /* Denotes the total number of ADC port aliases. Not a valid ADC alias */
     WICED_ADC_32BIT = 0x7FFFFFFF,
 } wiced_adc_t;
